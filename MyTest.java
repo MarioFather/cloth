@@ -47,22 +47,25 @@ public class MyTest {
 		m=cal.get(Calendar.MONTH);
 		d=cal.get(Calendar.DATE);
 		String date=y+"-"+m+"-"+d;
-		System.out.println("\t     品如服装店【结账单】\n");
-		System.out.println("   NO:"+cus.getCtid()+y+m+d+"\t服务员工："+emp.getEname());
-		System.out.println("\n     时间："+date);
-		System.out.println("---------------------------------------");
+		System.out.println("___________________________________________________");
+		System.out.println("|\t\t\t\t\t\t   |");
+		System.out.println("|\t\t     品如服装店【结账单】\t\t   |\n|\t\t\t\t\t\t   |");
+		System.out.println("|\t  NO:"+cus.getCtid()+y+m+Calendar.AM_PM+"\t服务员工："+emp.getEname()+"\t\t   |");
+		System.out.println("|\t\t\t\t\t\t   |\n|\t  时间："+date+"\t\t\t\t   |");
+		System.out.println("|\t---------------------------------------"+"\t   |");
 		List<Bill> selectAllBill = c.selectAllBill();
-		System.out.println("衣服名称\t\t数量\t衣服价格\t小计\n");
+		System.out.println("|\t衣服名称\t\t数量\t衣服价格\t小计   \t   |\n|\t\t\t\t\t\t   |");
 		double sum=0;
 		for (Bill bill : selectAllBill) {
-			System.out.println(bill.getClo().getClname()+"\t\t"+bill.getBnum()+"\t"+bill.getClo().getPrice()+"\t"+bill.getBsum());
+			System.out.println("|\t"+bill.getClo().getClname()+"\t\t"+bill.getBnum()+"\t"+bill.getClo().getPrice()+"\t"+bill.getBsum()+"\t   |");
 			sum+=bill.getBsum();
 		}
-		System.out.println("\n\t\t\t总计："+sum);
-		System.out.println("\t\t\t折扣："+sum*0.1);
-		System.out.println("\t\t\t实际总价："+sum*0.9);
-		System.out.println("----------------------------------------");
-		System.out.println("\n*************欢迎下次光临*************");
+		System.out.println("|\t\t\t\t\t\t   |\n|\t\t\t\t总计："+sum+"\t   |");
+		System.out.println("|\t\t\t\t折扣："+sum*0.1+"\t   |");
+		System.out.println("|\t\t\t\t应收RMB："+sum*0.9+"\t   |");
+		System.out.println("|\t---------------------------------------"+"\t   |");
+		System.out.println("|\t\t\t\t\t\t   |\n|\t**************欢迎下次光临**************\t   |");
+		System.out.println("|__________________________________________________|");
 		
 	}
 }
