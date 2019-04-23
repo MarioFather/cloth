@@ -181,4 +181,15 @@ public class CustomerDaoImpl implements CustomerDao {//顾客dao层
 		return list;
 	}
 
+	@Override
+	public void dropBill() throws SQLException {
+		String sql="delete from bill";
+		db.update(sql);
+		String sql2="drop sequence sq";
+		db.update(sql2);
+		String sql3="create sequence sq minvalue 1 maxvalue 99999 start with 1 increment by 1 nocache";
+		db.update(sql3);
+
+	}
+
 }

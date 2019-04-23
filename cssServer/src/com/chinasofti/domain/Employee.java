@@ -3,6 +3,10 @@ package com.chinasofti.domain;
 import java.io.Serializable;
 
 public class Employee implements Serializable{//员工表
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int emid;//员工编号
 	private String ename;//员工姓名
 	private String emsex;//员工性别

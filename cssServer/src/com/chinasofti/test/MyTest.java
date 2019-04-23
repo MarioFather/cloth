@@ -2,24 +2,12 @@ package com.chinasofti.test;
 
 
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 import org.junit.Test;
 
-import com.chinasofti.CssService.CssService;
-import com.chinasofti.CssService.impl.CssServiceImpl;
 import com.chinasofti.dao.CustomerDao;
-import com.chinasofti.dao.EmployeeDao;
 import com.chinasofti.dao.impl.CustomerDaoImpl;
-import com.chinasofti.dao.impl.EmployeeDaoImpl;
-import com.chinasofti.domain.Bill;
-import com.chinasofti.domain.Clothes;
-import com.chinasofti.domain.Customer;
-import com.chinasofti.domain.Employee;
 
-import oracle.sql.DATE;
 
 public class MyTest {
 
@@ -36,7 +24,7 @@ public class MyTest {
 		CssService c = new CssServiceImpl();
 		System.out.println(c.deleteEmployee(1));
 	}*/
-	@Test
+	/*@Test
 	public void ttt() throws SQLException{
 		CssService c = new CssServiceImpl();
 		Customer cus = c.loginC(1111);
@@ -67,5 +55,10 @@ public class MyTest {
 		System.out.println("|\t\t\t\t\t\t   |\n|\t**************欢迎下次光临**************\t   |");
 		System.out.println("|__________________________________________________|");
 		
+	}*/
+	@Test
+	public void tss() throws SQLException{
+		CustomerDao c = new CustomerDaoImpl();
+		c.dropBill();
 	}
 }

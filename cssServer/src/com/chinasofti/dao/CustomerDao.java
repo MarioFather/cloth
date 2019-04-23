@@ -26,5 +26,7 @@ public interface CustomerDao {//基础层
 	public boolean updateCtpassword(String str,int ctid) throws SQLException;
 	//模糊查询衣服属性
 	public List<Clothes> selectLikeClname(String str) throws SQLException;
+	////购物车自动清空
+	public void dropBill() throws SQLException;
 }
   

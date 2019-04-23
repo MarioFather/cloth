@@ -156,6 +156,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				d.setDeptno(r2.getInt("deptno"));
 				d.setDname(r2.getString("dname"));
 				d.setLoc(r2.getString("loc"));
+				e.setDe(d);
 			}
 			list.add(e);
 		}
