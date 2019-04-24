@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.chinasofti.dao.CustomerDao;
 import com.chinasofti.dao.EmployeeDao;
+import com.chinasofti.domain.Accounts;
 import com.chinasofti.domain.Clothes;
 import com.chinasofti.domain.Customer;
 import com.chinasofti.domain.Dept;
@@ -86,9 +87,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public boolean updateFrozen(int ctid) throws SQLException {
-		String sql="update client set frozen=1 where ctid="+ctid;
-		int i = db.update(sql);
+	public boolean updateFrozen(int ctid,int f) throws SQLException {
+		String sql="update client set frozen=? where ctid=?";
+		int i = db.update(sql,f,ctid);
 		return i>0;
 	}
 
@@ -159,6 +160,50 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				e.setDe(d);
 			}
 			list.add(e);
+		}
+		return list;
+	}
+
+	@Override
+	public List<Accounts> selectAllAcc() throws SQLException {
+		List<Accounts> list = new ArrayList<Accounts>();
+		String sql="select * from accounts";
+		ResultSet r = db.query(sql);
+		boolean b;
+		while(b=r.next()){
+			Accounts a = new Accounts();
+			if(b){
+				a.setAname(r.getString("aname"));
+				a.setAdate(r.getDate("adate"));
+				a.setAsum(r.getDouble("asum"));
+			}
+			list.add(a);
+		}
+		return list;
+	}
+
+	@Override
+	public void addAcc(String date, String aname, double money) throws SQLException {
+		String sql="insert into accounts values(to_date(?,'yyyy-mm-dd'),?,?)";
+		db.query(sql,date,aname,money);
+		
+	}
+
+	@Override
+	public List<Accounts> selectMonthAcc(String yy, String mm) throws SQLException {
+		List<Accounts> list = new ArrayList<Accounts>();
+		String sql="select * from accounts where to_char(adate,'yyyy-mm-dd')  like ?";
+		String d=yy+"-"+mm+"%";
+		ResultSet r = db.query(sql,d);
+		boolean b;
+		while(b=r.next()){
+			Accounts a = new Accounts();
+			if(b){
+				a.setAdate(r.getDate("adate"));
+				a.setAname(r.getString("aname"));
+				a.setAsum(r.getDouble("asum"));
+			}
+			list.add(a);
 		}
 		return list;
 	}

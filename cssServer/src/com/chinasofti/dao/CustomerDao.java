@@ -28,5 +28,7 @@ public interface CustomerDao {//基础层
 	public List<Clothes> selectLikeClname(String str) throws SQLException;
 	////购物车自动清空
 	public void dropBill() throws SQLException;
+	//结账
+	public boolean updateBalance(int ctid,double dd) throws SQLException;
 }
   

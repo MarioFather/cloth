@@ -3,6 +3,7 @@ package com.chinasofti.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.chinasofti.domain.Accounts;
 import com.chinasofti.domain.Clothes;
 import com.chinasofti.domain.Customer;
 import com.chinasofti.domain.Employee;
@@ -53,7 +54,7 @@ public interface EmployeeDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean updateFrozen(int ctid) throws SQLException;
+	public boolean updateFrozen(int ctid,int f) throws SQLException;
 	
 	
 	/*-----------------------------------------------------------------*/
@@ -93,5 +94,24 @@ public interface EmployeeDao {
 	 * @return
 	 */
 	public List<Employee> selectAllEmp() throws SQLException;
-	
+	/**
+	 * 查询所有账目
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Accounts> selectAllAcc() throws SQLException;
+	/**
+	 * 添加账目信息
+	 * @param aname
+	 * @param date
+	 * @param money
+	 * @throws SQLException
+	 */
+	public void addAcc(String aname, String date, double money) throws SQLException;
+	/**
+	 * 根据月份查询账目
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Accounts> selectMonthAcc(String yy,String mm)throws SQLException;
 }

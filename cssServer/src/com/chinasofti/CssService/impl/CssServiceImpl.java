@@ -8,6 +8,7 @@ import com.chinasofti.dao.CustomerDao;
 import com.chinasofti.dao.EmployeeDao;
 import com.chinasofti.dao.impl.CustomerDaoImpl;
 import com.chinasofti.dao.impl.EmployeeDaoImpl;
+import com.chinasofti.domain.Accounts;
 import com.chinasofti.domain.Bill;
 import com.chinasofti.domain.Clothes;
 import com.chinasofti.domain.Customer;
@@ -165,11 +166,11 @@ public class CssServiceImpl implements CssService{
 	}
 
 	@Override
-	public String updateFrozenById(int ctid) {
+	public String updateFrozenById(int ctid,int i) {
 		try {
-			return this.empDao.updateFrozen(ctid)?"账户已冻结":"账户冻结失败";
+			return this.empDao.updateFrozen(ctid,i)?"修改成功":"修改失败";
 		} catch (SQLException e) {
-			System.out.println("账户（挂失）冻结失败");
+			System.out.println("修改出现错误");
 			return null;
 		}
 	}
@@ -252,6 +253,47 @@ public class CssServiceImpl implements CssService{
 			System.out.println("购物车清空失败");
 		}
 		
+	}
+
+	@Override
+	public String updateBalance(int ctid, double dd) {
+		try {
+			return this.cusDao.updateBalance(ctid,dd)?"结账成功":"结账失败";
+		} catch (SQLException e) {
+			System.out.println("结账出现错误");
+			return null;
+		}
+		
+	}
+
+	@Override
+	public void addAccounts(String aname, String date, double money) {
+		try {
+			this.empDao.addAcc(aname,date,money);
+		} catch (SQLException e) {
+			System.out.println("账单添加失败");
+		}
+	}
+
+
+	@Override
+	public List<Accounts> selectMonthAccounts(String yy, String mm) {
+		try {
+			return this.empDao.selectMonthAcc(yy, mm);
+		} catch (SQLException e) {
+			System.out.println("根据月份查询账单失败");
+			return null;
+		}
+	}
+
+	@Override
+	public List<Accounts> selectAllAccounts() {
+		try {
+			return this.empDao.selectAllAcc();
+		} catch (SQLException e) {
+			System.out.println("查询账单失败");
+			return null;
+		}
 	}
 	
 	

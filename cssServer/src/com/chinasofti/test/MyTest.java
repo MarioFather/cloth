@@ -2,11 +2,13 @@ package com.chinasofti.test;
 
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.Test;
 
-import com.chinasofti.dao.CustomerDao;
-import com.chinasofti.dao.impl.CustomerDaoImpl;
+import com.chinasofti.CssService.CssService;
+import com.chinasofti.CssService.impl.CssServiceImpl;
+import com.chinasofti.domain.Accounts;
 
 
 public class MyTest {
@@ -58,7 +60,12 @@ public class MyTest {
 	}*/
 	@Test
 	public void tss() throws SQLException{
-		CustomerDao c = new CustomerDaoImpl();
-		c.dropBill();
+		CssService c = new CssServiceImpl();
+		List<Accounts> selectMonthAccounts = c.selectMonthAccounts("2019","03");
+		for (Accounts accounts : selectMonthAccounts) {
+			System.out.println(accounts);
+		}
+		
+		
 	}
 }

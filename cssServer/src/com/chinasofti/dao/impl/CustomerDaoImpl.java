@@ -192,4 +192,11 @@ public class CustomerDaoImpl implements CustomerDao {//顾客dao层
 
 	}
 
+	@Override
+	public boolean updateBalance(int ctid,double dd) throws SQLException {
+		String sql ="update client set balance=? where ctid=?";
+		int i = db.update(sql,dd,ctid);
+		return i>0;
+	}
+
 }

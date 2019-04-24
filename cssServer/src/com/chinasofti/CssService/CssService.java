@@ -2,6 +2,7 @@ package com.chinasofti.CssService;
 
 import java.util.List;
 
+import com.chinasofti.domain.Accounts;
 import com.chinasofti.domain.Bill;
 import com.chinasofti.domain.Clothes;
 import com.chinasofti.domain.Customer;
@@ -51,7 +52,7 @@ public interface CssService {
 	public String addVip(int ctid);
 	
 	//给客户卡挂失(冻结)
-	public String updateFrozenById(int ctid);
+	public String updateFrozenById(int ctid,int i);
 	
 	//经理添加衣服信息
 	public String addClothes(Clothes clo);
@@ -76,4 +77,16 @@ public interface CssService {
 	
 	//清空购物车
 	public void deleteBill();
+	
+	//结算余额
+	public String updateBalance(int ctid,double dd);
+	
+	//流水账
+	public void addAccounts(String aname,String date,double money);
+	
+	//根据月份查询流水账
+	public List<Accounts> selectMonthAccounts(String yy,String mm);
+	
+	//查询所有账单
+	public List<Accounts> selectAllAccounts();
 }
